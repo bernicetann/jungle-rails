@@ -5,6 +5,10 @@
   </header>
 
   <div class="panel panel-default items">
+    <% if cart.size == 0 %>
+      <h4>You have nothing in your cart. Please proceed to the <%= link_to 'Home', :root %> page.</h4>
+    <% else %>
+
     <table class="table table-bordered">
       <thead>
         <tr>
@@ -49,5 +53,7 @@
       <% end %>
     </div>
   </div>
+
+  <% end %>
 
 </section>
