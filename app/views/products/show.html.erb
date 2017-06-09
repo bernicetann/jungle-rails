@@ -26,6 +26,24 @@
       </div>
     </div>
 
+
+
   </article>
 
 </section>
+
+<div class="col-sm-8">
+      <dl>
+        <dt>Rating</dt>
+        <%if @product.reviews.first.rating == 0 || 1 || 2 || 3 || 4 || 5 %>
+          <dd><b><%= @product.reviews.first.rating %></b></dd>
+        <% end %>
+        <dt>Description</dt>
+        <dd><%= @product.reviews.first.description %></dd>
+      </dl>
+    </div>
+
+
+
+
+
