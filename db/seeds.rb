@@ -19,7 +19,11 @@ unless Rails.env.development?
   exit 0
 end
 
+Review.destroy_all
+
+LineItem.destroy_all
 # Let's do this ...
+
 
 ## CATEGORIES
 
@@ -43,7 +47,7 @@ cat1.products.create!({
   price: 64.99
 })
 
-cat1.products.create!({
+productOne = cat1.products.create!({
   name:  'Women\'s Zebra pants',
   description: Faker::Hipster.paragraph(4),
   image: open_asset('apparel2.jpg'),
@@ -51,7 +55,7 @@ cat1.products.create!({
   price: 124.99
 })
 
-cat1.products.create!({
+productTwo = cat1.products.create!({
   name:  'Hipster Hat',
   description: Faker::Hipster.paragraph(4),
   image: open_asset('apparel3.jpg'),
@@ -130,6 +134,20 @@ cat3.products.create!({
   image: open_asset('furniture3.jpg'),
   quantity: 23,
   price: 2_483.75
+})
+
+Review.create!({
+  rating: 5,
+  description: 'Very comfortable to wear! Would buy again.',
+  user_id: 2,
+  product_id: productOne.id
+})
+
+Review.create!({
+  rating: 4,
+  description: 'This is cool',
+  user_id: 2,
+  product_id: productTwo.id
 })
 
 
