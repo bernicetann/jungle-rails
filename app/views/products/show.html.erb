@@ -26,22 +26,34 @@
       </div>
     </div>
 
-
-
   </article>
 
 </section>
 
 <div class="col-sm-8">
-      <dl>
-        <dt>Rating</dt>
-        <%if @product.reviews.first.rating == 0 || 1 || 2 || 3 || 4 || 5 %>
-          <dd><b><%= @product.reviews.first.rating %></b></dd>
-        <% end %>
-        <dt>Description</dt>
-        <dd><%= @product.reviews.first.description %></dd>
-      </dl>
-    </div>
+  <dl>
+    <dt>Rating</dt>
+    <%if @product.reviews.first.rating == 0 || 1 || 2 || 3 || 4 || 5 %>
+      <dd><b><%= @product.reviews.first.rating %></b></dd>
+    <% end %>
+    <dt>Description</dt>
+    <dd><%= @product.reviews.first.description %></dd>
+  </dl>
+</div>
+
+<div class="col-sm-8">
+<%= form_for([@product, @new_review]) do |form| %>
+  <div class="field">
+    <%= form.label :rating %>
+    <%= form.select :rating, [['0','0'],['1','1'],['2','2'],['3','3'],['4','4'],['5','5']], id: :product_reviews %>
+    <%= form.label :description %>
+    <%= form.text_area :description, id: :product_reviews %>
+  </div>
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
+</div>
 
 
 
