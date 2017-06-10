@@ -31,27 +31,33 @@
 </section>
 
 <div class="col-sm-8">
-  <dl>
+
     <% @review.each do |review|%>
-      <dt>Rating</dt>
-      <dd><b><%= review.rating %></b></dd>
-      <dt>Description</dt>
-      <dd><%= review.description %></dd>
+      <dl>
+        <dt>Rating</dt>
+        <dd><b><%= review.rating %></b></dd>
+        <dt>Description</dt>
+        <dd><%= review.description %></dd>
+      </dl>
+      <% if current_user.id == review.user_id %>
+      <%= link_to fa_icon('trash'), [review.product, review], class: 'btn btn-sm btn-danger', method: :delete, data: { confirm: "Are you sure?" } %>
+      <% end %>
     <% end %>
-  </dl>
 </div>
 
 <div class="col-sm-8">
-<%= form_for([@product, @new_review]) do |form| %>
-  <div class="field">
-    <%= form.label :rating %>
-    <%= form.select :rating, [['0','0'],['1','1'],['2','2'],['3','3'],['4','4'],['5','5']], id: :product_reviews %>
-    <%= form.label :description %>
-    <%= form.text_area :description, id: :product_reviews %>
-  </div>
-  <div class="actions">
-    <%= form.submit %>
-  </div>
+<% if current_user %>
+  <%= form_for([@product, @new_review]) do |form| %>
+    <div class="field">
+      <%= form.label :rating %>
+      <%= form.select :rating, [['0','0'],['1','1'],['2','2'],['3','3'],['4','4'],['5','5']], id: :product_reviews %>
+      <%= form.label :description %>
+      <%= form.text_area :description, id: :product_reviews %>
+    </div>
+    <div class="actions">
+      <%= form.submit %>
+    </div>
+  <% end %>
 <% end %>
 </div>
 

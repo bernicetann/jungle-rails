@@ -1,5 +1,7 @@
 class ReviewsController < ApplicationController
 
+  before_filter :authorize
+
   def create
     @review = Review.new(review_params)
     @review.user = current_user
@@ -10,6 +12,12 @@ class ReviewsController < ApplicationController
     else
       redirect_to @review.product, notice: 'Failed to create the whale'
     end
+  end
+
+  def destroy
+    @review = Review.find params[:id]
+    @review.destroy
+    redirect_to [:product], notice: 'Product deleted!'
   end
 
   private
