@@ -11,6 +11,11 @@ This is a small individual project where I added the following features:
 - Provided security accessing Administrator pages
 - Implemented product ratings, where each logged in user is able to post and rate a review on a product as well as view the average rating on each item
 
+!["Index Page"](https://github.com/bernicetann/jungle-rails/blob/master/docs/Sold-out-badge.png?raw=true)
+!["Reviews Page"](https://github.com/bernicetann/jungle-rails/blob/master/docs/Reviews-page.png?raw=true)
+!["Carts Page"](https://github.com/bernicetann/jungle-rails/blob/master/docs/My-cart-page.png?raw=true)
+!["Order Page"](https://github.com/bernicetann/jungle-rails/blob/master/docs/Order-page.png?raw=true)
+
 
 ## Setup
 
