@@ -31,31 +31,44 @@
 </section>
 
 <div class="col-sm-8">
-
-    <% @review.each do |review|%>
-      <dl>
-        <dt>Rating</dt>
-        <dd><b><%= review.rating %></b></dd>
-        <dt>Description</dt>
-        <dd><%= review.description %></dd>
-      </dl>
-      <% if current_user.id == review.user_id %>
-      <%= link_to fa_icon('trash'), [review.product, review], class: 'btn btn-sm btn-danger', method: :delete, data: { confirm: "Are you sure?" } %>
-      <% end %>
-    <% end %>
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Rating</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+      <tbody>
+        <% @review.each do |review|%>
+        <tr>
+          <td><%= review.user.first_name%> <%= review.user.last_name %></td>
+          <td><%= review.rating%></td>
+          <td><%= review.description%> <br/>
+          <% if current_user && current_user.id == review.user_id %>
+          <%= link_to fa_icon('trash'), [review.product, review], class: 'btn btn-sm btn-danger pull-right', method: :delete, data: { confirm: "Are you sure?" } %> <% end %>
+          </td>
+        </tr>
+        <% end %>
+      </tbody>
+  </table>
 </div>
 
+
 <div class="col-sm-8">
+<h2>Post a Review:</h2>
 <% if current_user %>
   <%= form_for([@product, @new_review]) do |form| %>
-    <div class="field">
+    <div class="form-group pull-right">
       <%= form.label :rating %>
-      <%= form.select :rating, [['0','0'],['1','1'],['2','2'],['3','3'],['4','4'],['5','5']], id: :product_reviews %>
+      <%= form.select :rating, [['0','0'],['1','1'],['2','2'],['3','3'],['4','4'],['5','5']], id: :product_reviews, class: 'form-control'%>
+    </div>
+    <div class="form-group">
       <%= form.label :description %>
-      <%= form.text_area :description, id: :product_reviews %>
+      <%= form.text_area :description, id: :product_reviews, class: 'form-control'%>
     </div>
     <div class="actions">
-      <%= form.submit %>
+      <%= form.submit 'Submit', class: 'btn btn-primary' %>
     </div>
   <% end %>
 <% end %>

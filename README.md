@@ -2,6 +2,15 @@
 
 A mini e-commerce application built with Rails 4.2 for purposes of teaching Rails by example.
 
+This is a small individual project where I added the following features:
+- Implemented a product sold out badge
+- Allow administrators to create products, but not categories
+- Added common functionality of user authentication
+- Changed the Order Show page to contain name, image and description, the respective quantities, total and email that was used
+- Added an email-receipt which can be seen from the console
+- Provided security accessing Administrator pages
+- Implemented product ratings, where each logged in user is able to post and rate a review on a product as well as view the average rating on each item
+
 
 ## Setup
 
