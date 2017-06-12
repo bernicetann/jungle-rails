@@ -13,7 +13,7 @@ RSpec.describe Product, type: :model do
       expect(productOne).to be_valid
     end
 
-    it 'should not be valid with a name' do
+    it 'should not be valid without a name' do
       cat1 = Category.create!(name: 'Apparel')
       productOne = cat1.products.create({
         name:  nil,
@@ -24,7 +24,7 @@ RSpec.describe Product, type: :model do
       expect(productOne.errors.full_messages).to include("Name can't be blank")
     end
 
-    it 'should not be valid with a price' do
+    it 'should not be valid without a price' do
       cat1 = Category.create!(name: 'Apparel')
       productOne = cat1.products.create({
         name:  'Shirt',
@@ -35,7 +35,7 @@ RSpec.describe Product, type: :model do
       expect(productOne.errors.full_messages).to include("Price can't be blank")
     end
 
-    it 'should not be valid with a quantity' do
+    it 'should not be valid without a quantity' do
       cat1 = Category.create!(name: 'Apparel')
       productOne = cat1.products.create({
         name:  'shirt',
@@ -46,7 +46,7 @@ RSpec.describe Product, type: :model do
       expect(productOne.errors.full_messages).to include("Quantity can't be blank")
     end
 
-    it 'should not be valid with a category' do
+    it 'should not be valid without a category' do
       productOne = Product.create({
         name:  'shirt',
         description: Faker::Hipster.paragraph(4),
