@@ -16,7 +16,6 @@ class SessionsController < ApplicationController
     # If user's login doesn't work, send them back to the login form.
       flash.now[:error] = "Email and Password are not valid"
       render :new
-      puts 'RENDER TO NEW'
     end
   end
 
