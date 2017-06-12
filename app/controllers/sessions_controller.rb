@@ -14,7 +14,9 @@ class SessionsController < ApplicationController
       redirect_to '/'
     else
     # If user's login doesn't work, send them back to the login form.
-      redirect_to '/login'
+      flash.now[:error] = "Email and Password are not valid"
+      render :new
+      puts 'RENDER TO NEW'
     end
   end
 
